@@ -48,7 +48,7 @@
                     navigator.geolocation.getCurrentPosition(showPosition);
                     
                 }else{
-                    console.log('Location isnt supported')
+                    console.log('Location isnt supported on This Browser')
                 }
             }
 
@@ -62,8 +62,6 @@
                             marker.bindPopup(popup).openPopup();
                             map.setView(new L.LatLng(position.coords.latitude, position.coords.longitude),4)
                         }})
-                
-
             }
 
 
