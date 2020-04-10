@@ -30,40 +30,22 @@
         </div>
 
         <h1 id="loc"></h1>
-        <button onClick="getLocation()">get cords</button>
     </body>
 
     <script>
-
-
             var loc = document.getElementById('loc');
             var map = L.map('map').setView([0,0],3);
             L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=0wIPgdmWVTqF7WuJjV0R',{
                 attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
             }).addTo(map);
 
-            // fetch('https://api.waqi.info/feed/here/?token=a6ed85521a1377b1ffdc15d9ab6b035b0acf9cb4')
-            function getLocation(){
-                if(navigator.geolocation){
-                    navigator.geolocation.getCurrentPosition(showPosition);
-                    
-                }else{
-                    console.log('Location isnt supported on This Browser')
-                }
-            }
-
-            function showPosition(position){
-                var marker = L.marker([position.coords.latitude,position.coords.longitude]).addTo(map);
-
-                //fetch(`https://api.breezometer.com/air-quality/v2/current-conditions?lat=${position.coords.latitude}&lon=${position.coords.longitude}&key=f76b6c689185412aa1297bb07fbdc24a`)
-                $.ajax({url: `https://api.breezometer.com/air-quality/v2/current-conditions?lat=${position.coords.latitude}&lon=${position.coords.longitude}&key=f76b6c689185412aa1297bb07fbdc24a`,
-                        success: function(result){
-                            var popup = `AQI level: ${result.data.indexes.baqi.aqi}`
-                            marker.bindPopup(popup).openPopup();
-                            map.setView(new L.LatLng(position.coords.latitude, position.coords.longitude),4)
-                        }})
-            }
-
-
+            //fetch(`https://api.breezometer.com/air-quality/v2/current-conditions?lat=${position.coords.latitude}&lon=${position.coords.longitude}&key=f76b6c689185412aa1297bb07fbdc24a`)
+            $.ajax({url: `https://api.waqi.info/feed/here/?token={{ token }}`,
+                    success: function(result){
+                        var marker = L.marker([result.data.city.geo[0],result.data.city.geo[1]]).addTo(map);
+                        var popup = `AQI level: ${result.data.aqi}`
+                        marker.bindPopup(popup).openPopup();
+                        map.setView(new L.LatLng(result.data.city.geo[0], result.data.city.geo[0]),4)
+            }})
     </script>
 </html>

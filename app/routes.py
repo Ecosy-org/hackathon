@@ -1,5 +1,6 @@
 from app import app
-
+import os
+TOKEN = os.environ['AQICN_TOKEN']
 from flask import (Flask,
                    redirect,
                    url_for,
@@ -9,5 +10,5 @@ from flask import (Flask,
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('home.html')
+    return render_template('home.html', token=TOKEN)
 
