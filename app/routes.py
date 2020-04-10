@@ -1,4 +1,5 @@
 from app import app
+import csv
 import os
 TOKEN = os.environ['AQICN_TOKEN']
 from flask import (Flask,
@@ -11,4 +12,3 @@ from flask import (Flask,
 @app.route('/index')
 def index():
     return render_template('home.html', token=TOKEN)
-

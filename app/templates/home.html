@@ -16,13 +16,35 @@
 
             //fetch(`https://api.breezometer.com/air-quality/v2/current-conditions?lat=${position.coords.latitude}&lon=${position.coords.longitude}&key=f76b6c689185412aa1297bb07fbdc24a`)
             $("#aqi").click(function() {
+                var popup = "";
+                var marker
                 $.ajax({url: `https://api.waqi.info/feed/here/?token={{ token }}`,
                         success: function(result){
-                            var marker = L.marker([result.data.city.geo[0],result.data.city.geo[1]]).addTo(map);
-                            var popup = `AQI level: ${result.data.aqi}`
+                            marker = L.marker([result.data.city.geo[0],result.data.city.geo[1]]).addTo(map);
+                            popup += `AQI level: ${result.data.aqi}`
                             marker.bindPopup(popup).openPopup();
                             map.setView(new L.LatLng(result.data.city.geo[0], result.data.city.geo[1]),4)
                         }})
+                $.ajax({url: `https://json.geoiplookup.io/`,
+                        success: function(result){
+                            let country = result.country_name;
+                            $.ajax({url: "/static/data.json",
+                                    success: function(result){
+                                        let json_length = result.data.length;
+                                        let emission = 0;
+                                        for(let x = 0; x < json_length; x++)
+                                        {
+                                            if (result.data[x].name == country) {
+                                                emission = result.data[x].perCapitaEmissions;
+                                                break;
+                                            }
+                                        }
+                                        popup += `Daily emissions per capita in ${country}: ${emission}<br>`;
+                                        marker.bindPopup(popup).openPopup();
+
+                                    }})
+                                    // we need to catch errors here if the country isn't in the json
+                        }}) 
             })
     </script>
 {% endblock %}
