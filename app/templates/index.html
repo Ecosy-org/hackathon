@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script
+	src="https://code.jquery.com/jquery-3.4.1.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	crossorigin="anonymous"></script>
+    <button class="geoip">Find AQI for city</button>
+    <p id="location"></p>
+    <script>
+        $(".geoip").click(function() {
+            $.getJSON("https://api.waqi.info/feed/here/?token={{ token }}",
+                function(data, status) {
+                    $("#location").html(`${data["data"]["city"]["name"]} - AQI: ${data["data"]["aqi"]}`)
+                }
+            )
+        })
+    </script>
+    
+{% endblock %}
+
