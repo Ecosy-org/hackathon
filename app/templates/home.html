@@ -1,37 +1,12 @@
-<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-        crossorigin=""/>
-        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-        crossorigin=""></script>
-        <script
-        src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous">
-        </script>
+{% extends "base.html" %}
 
-    
-    <style>
-    #map{
-        margin: 0px !important;
-        padding: 0px !important;
-        width: 100%;
-        height: 500px;
-    }
-    </style>
-    </head>
+{% block content %}
+    <div id="map">
 
-    <body style="padding:0px;">
-        <div id="map">
+    </div>
 
-        </div>
-
-        <h1 id="loc"></h1>
-    </body>
-
+    <h1 id="loc"></h1>
+    <button id="aqi">Get me my Air Quality Index!</button>
     <script>
             var loc = document.getElementById('loc');
             var map = L.map('map').setView([0,0],3);
@@ -40,12 +15,14 @@
             }).addTo(map);
 
             //fetch(`https://api.breezometer.com/air-quality/v2/current-conditions?lat=${position.coords.latitude}&lon=${position.coords.longitude}&key=f76b6c689185412aa1297bb07fbdc24a`)
-            $.ajax({url: `https://api.waqi.info/feed/here/?token={{ token }}`,
-                    success: function(result){
-                        var marker = L.marker([result.data.city.geo[0],result.data.city.geo[1]]).addTo(map);
-                        var popup = `AQI level: ${result.data.aqi}`
-                        marker.bindPopup(popup).openPopup();
-                        map.setView(new L.LatLng(result.data.city.geo[0], result.data.city.geo[0]),4)
-                    }})
+            $("#aqi").click(function() {
+                $.ajax({url: `https://api.waqi.info/feed/here/?token={{ token }}`,
+                        success: function(result){
+                            var marker = L.marker([result.data.city.geo[0],result.data.city.geo[1]]).addTo(map);
+                            var popup = `AQI level: ${result.data.aqi}`
+                            marker.bindPopup(popup).openPopup();
+                            map.setView(new L.LatLng(result.data.city.geo[0], result.data.city.geo[0]),4)
+                        }})
+            })
     </script>
-</html>
+{% endblock %}
