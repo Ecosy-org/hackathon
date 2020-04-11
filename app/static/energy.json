@@ -1,0 +1,699 @@
+{
+    "data": [
+        {
+            "name": "Iceland",
+            "energyConsumption": 53832,
+            "pop2020": "341.2430"
+        },
+        {
+            "name": "Norway",
+            "energyConsumption": 23000,
+            "pop2020": "5421.2410"
+        },
+        {
+            "name": "Bahrain",
+            "energyConsumption": 19597,
+            "pop2020": "1701.5750"
+        },
+        {
+            "name": "Kuwait",
+            "energyConsumption": 15591,
+            "pop2020": "4270.5710"
+        },
+        {
+            "name": "Canada",
+            "energyConsumption": 15588,
+            "pop2020": "37742.1540"
+        },
+        {
+            "name": "Finland",
+            "energyConsumption": 15250,
+            "pop2020": "5540.7200"
+        },
+        {
+            "name": "Qatar",
+            "energyConsumption": 14782,
+            "pop2020": "2881.0530"
+        },
+        {
+            "name": "Luxembourg",
+            "energyConsumption": 13915,
+            "pop2020": "625.9780"
+        },
+        {
+            "name": "Sweden",
+            "energyConsumption": 13480,
+            "pop2020": "10099.2650"
+        },
+        {
+            "name": "United States",
+            "energyConsumption": 12994,
+            "pop2020": "331002.6510"
+        },
+        {
+            "name": "United Arab Emirates",
+            "energyConsumption": 11088,
+            "pop2020": "9890.4020"
+        },
+        {
+            "name": "South Korea",
+            "energyConsumption": 10497,
+            "pop2020": "51269.1850"
+        },
+        {
+            "name": "Brunei",
+            "energyConsumption": 10291,
+            "pop2020": "437.4790"
+        },
+        {
+            "name": "Australia",
+            "energyConsumption": 10071,
+            "pop2020": "25499.8840"
+        },
+        {
+            "name": "Saudi Arabia",
+            "energyConsumption": 9401,
+            "pop2020": "34813.8710"
+        },
+        {
+            "name": "New Zealand",
+            "energyConsumption": 9026,
+            "pop2020": "4822.2330"
+        },
+        {
+            "name": "Singapore",
+            "energyConsumption": 8845,
+            "pop2020": "5850.3420"
+        },
+        {
+            "name": "Austria",
+            "energyConsumption": 8356,
+            "pop2020": "9006.3980"
+        },
+        {
+            "name": "Japan",
+            "energyConsumption": 7820,
+            "pop2020": "126476.4610"
+        },
+        {
+            "name": "Belgium",
+            "energyConsumption": 7709,
+            "pop2020": "11589.6230"
+        },
+        {
+            "name": "Switzerland",
+            "energyConsumption": 7520,
+            "pop2020": "8654.6220"
+        },
+        {
+            "name": "Trinidad and Tobago",
+            "energyConsumption": 7093,
+            "pop2020": "1399.4880"
+        },
+        {
+            "name": "Germany",
+            "energyConsumption": 7035,
+            "pop2020": "83783.9420"
+        },
+        {
+            "name": "France",
+            "energyConsumption": 6940,
+            "pop2020": "65273.5110"
+        },
+        {
+            "name": "Estonia",
+            "energyConsumption": 6732,
+            "pop2020": "1326.5350"
+        },
+        {
+            "name": "Slovenia",
+            "energyConsumption": 6728,
+            "pop2020": "2078.9380"
+        },
+        {
+            "name": "Netherlands",
+            "energyConsumption": 6713,
+            "pop2020": "17134.8720"
+        },
+        {
+            "name": "Russia",
+            "energyConsumption": 6603,
+            "pop2020": "145934.4620"
+        },
+        {
+            "name": "Israel",
+            "energyConsumption": 6601,
+            "pop2020": "8655.5350"
+        },
+        {
+            "name": "Oman",
+            "energyConsumption": 6446,
+            "pop2020": "5106.6260"
+        },
+        {
+            "name": "Czech Republic",
+            "energyConsumption": 6259,
+            "pop2020": "10708.9810"
+        },
+        {
+            "name": "Hong Kong",
+            "energyConsumption": 6083,
+            "pop2020": "7496.9810"
+        },
+        {
+            "name": "Denmark",
+            "energyConsumption": 5859,
+            "pop2020": "5792.2020"
+        },
+        {
+            "name": "Gibraltar",
+            "energyConsumption": 5693,
+            "pop2020": "33.6910"
+        },
+        {
+            "name": "Ireland",
+            "energyConsumption": 5672,
+            "pop2020": "4937.7860"
+        },
+        {
+            "name": "Kazakhstan",
+            "energyConsumption": 5600,
+            "pop2020": "18776.7070"
+        },
+        {
+            "name": "Spain",
+            "energyConsumption": 5356,
+            "pop2020": "46754.7780"
+        },
+        {
+            "name": "Slovakia",
+            "energyConsumption": 5137,
+            "pop2020": "5459.6420"
+        },
+        {
+            "name": "United Kingdom",
+            "energyConsumption": 5130,
+            "pop2020": "67886.0110"
+        },
+        {
+            "name": "Greece",
+            "energyConsumption": 5063,
+            "pop2020": "10423.0540"
+        },
+        {
+            "name": "Italy",
+            "energyConsumption": 5002,
+            "pop2020": "60461.8260"
+        },
+        {
+            "name": "Malta",
+            "energyConsumption": 4925,
+            "pop2020": "441.5430"
+        },
+        {
+            "name": "Bulgaria",
+            "energyConsumption": 4709,
+            "pop2020": "6948.4450"
+        },
+        {
+            "name": "Portugal",
+            "energyConsumption": 4663,
+            "pop2020": "10196.7090"
+        },
+        {
+            "name": "Malaysia",
+            "energyConsumption": 4652,
+            "pop2020": "32365.9990"
+        },
+        {
+            "name": "Montenegro",
+            "energyConsumption": 4612,
+            "pop2020": "628.0660"
+        },
+        {
+            "name": "Serbia",
+            "energyConsumption": 4272,
+            "pop2020": "8737.3710"
+        },
+        {
+            "name": "South Africa",
+            "energyConsumption": 4198,
+            "pop2020": "59308.6900"
+        },
+        {
+            "name": "Poland",
+            "energyConsumption": 3972,
+            "pop2020": "37846.6110"
+        },
+        {
+            "name": "Hungary",
+            "energyConsumption": 3966,
+            "pop2020": "9660.3510"
+        },
+        {
+            "name": "China",
+            "energyConsumption": 3927,
+            "pop2020": "1439323.7760"
+        },
+        {
+            "name": "Chile",
+            "energyConsumption": 3880,
+            "pop2020": "19116.2010"
+        },
+        {
+            "name": "Lithuania",
+            "energyConsumption": 3821,
+            "pop2020": "2722.2890"
+        },
+        {
+            "name": "Croatia",
+            "energyConsumption": 3714,
+            "pop2020": "4105.2670"
+        },
+        {
+            "name": "Belarus",
+            "energyConsumption": 3680,
+            "pop2020": "9449.3230"
+        },
+        {
+            "name": "Cyprus",
+            "energyConsumption": 3625,
+            "pop2020": "1207.3590"
+        },
+        {
+            "name": "Suriname",
+            "energyConsumption": 3597,
+            "pop2020": "586.6320"
+        },
+        {
+            "name": "Latvia",
+            "energyConsumption": 3507,
+            "pop2020": "1886.1980"
+        },
+        {
+            "name": "Macedonia",
+            "energyConsumption": 3497,
+            "pop2020": "2083.3740"
+        },
+        {
+            "name": "Bosnia and Herzegovina",
+            "energyConsumption": 3447,
+            "pop2020": "3280.8190"
+        },
+        {
+            "name": "Ukraine",
+            "energyConsumption": 3419,
+            "pop2020": "43733.7620"
+        },
+        {
+            "name": "Uruguay",
+            "energyConsumption": 3085,
+            "pop2020": "3473.7300"
+        },
+        {
+            "name": "Argentina",
+            "energyConsumption": 3075,
+            "pop2020": "45195.7740"
+        },
+        {
+            "name": "Iran",
+            "energyConsumption": 3022,
+            "pop2020": "83992.9490"
+        },
+        {
+            "name": "Turkey",
+            "energyConsumption": 2847,
+            "pop2020": "84339.0670"
+        },
+        {
+            "name": "Venezuela",
+            "energyConsumption": 2719,
+            "pop2020": "28435.9400"
+        },
+        {
+            "name": "Georgia",
+            "energyConsumption": 2694,
+            "pop2020": "3989.1670"
+        },
+        {
+            "name": "Turkmenistan",
+            "energyConsumption": 2679,
+            "pop2020": "6031.2000"
+        },
+        {
+            "name": "Brazil",
+            "energyConsumption": 2620,
+            "pop2020": "212559.4170"
+        },
+        {
+            "name": "Lebanon",
+            "energyConsumption": 2588,
+            "pop2020": "6825.4450"
+        },
+        {
+            "name": "Romania",
+            "energyConsumption": 2584,
+            "pop2020": "19237.6910"
+        },
+        {
+            "name": "Thailand",
+            "energyConsumption": 2539,
+            "pop2020": "69799.9780"
+        },
+        {
+            "name": "Albania",
+            "energyConsumption": 2309,
+            "pop2020": "2877.7970"
+        },
+        {
+            "name": "Azerbaijan",
+            "energyConsumption": 2202,
+            "pop2020": "10139.1770"
+        },
+        {
+            "name": "Mauritius",
+            "energyConsumption": 2183,
+            "pop2020": "1271.7680"
+        },
+        {
+            "name": "Mexico",
+            "energyConsumption": 2157,
+            "pop2020": "128932.7530"
+        },
+        {
+            "name": "Panama",
+            "energyConsumption": 2064,
+            "pop2020": "4314.7670"
+        },
+        {
+            "name": "Mongolia",
+            "energyConsumption": 2006,
+            "pop2020": "3278.2900"
+        },
+        {
+            "name": "Armenia",
+            "energyConsumption": 1962,
+            "pop2020": "2963.2430"
+        },
+        {
+            "name": "Costa Rica",
+            "energyConsumption": 1942,
+            "pop2020": "5094.1180"
+        },
+        {
+            "name": "Kyrgyzstan",
+            "energyConsumption": 1941,
+            "pop2020": "6524.1950"
+        },
+        {
+            "name": "Jordan",
+            "energyConsumption": 1865,
+            "pop2020": "10203.1340"
+        },
+        {
+            "name": "Botswana",
+            "energyConsumption": 1816,
+            "pop2020": "2351.6270"
+        },
+        {
+            "name": "Libya",
+            "energyConsumption": 1811,
+            "pop2020": "6871.2920"
+        },
+        {
+            "name": "Egypt",
+            "energyConsumption": 1683,
+            "pop2020": "102334.4040"
+        },
+        {
+            "name": "Namibia",
+            "energyConsumption": 1653,
+            "pop2020": "2540.9050"
+        },
+        {
+            "name": "Uzbekistan",
+            "energyConsumption": 1645,
+            "pop2020": "33469.2030"
+        },
+        {
+            "name": "Dominican Republic",
+            "energyConsumption": 1616,
+            "pop2020": "10847.9100"
+        },
+        {
+            "name": "Paraguay",
+            "energyConsumption": 1552,
+            "pop2020": "7132.5380"
+        },
+        {
+            "name": "Tajikistan",
+            "energyConsumption": 1499,
+            "pop2020": "9537.6450"
+        },
+        {
+            "name": "Tunisia",
+            "energyConsumption": 1455,
+            "pop2020": "11818.6190"
+        },
+        {
+            "name": "Cuba",
+            "energyConsumption": 1451,
+            "pop2020": "11326.6160"
+        },
+        {
+            "name": "Vietnam",
+            "energyConsumption": 1424,
+            "pop2020": "97338.5790"
+        },
+        {
+            "name": "Moldova",
+            "energyConsumption": 1386,
+            "pop2020": "4033.9630"
+        },
+        {
+            "name": "Ecuador",
+            "energyConsumption": 1376,
+            "pop2020": "17643.0540"
+        },
+        {
+            "name": "Algeria",
+            "energyConsumption": 1363,
+            "pop2020": "43851.0440"
+        },
+        {
+            "name": "Peru",
+            "energyConsumption": 1346,
+            "pop2020": "32971.8540"
+        },
+        {
+            "name": "Iraq",
+            "energyConsumption": 1328,
+            "pop2020": "40222.4930"
+        },
+        {
+            "name": "Colombia",
+            "energyConsumption": 1312,
+            "pop2020": "50882.8910"
+        },
+        {
+            "name": "Gabon",
+            "energyConsumption": 1168,
+            "pop2020": "2225.7340"
+        },
+        {
+            "name": "Jamaica",
+            "energyConsumption": 1051,
+            "pop2020": "2961.1670"
+        },
+        {
+            "name": "El Salvador",
+            "energyConsumption": 937,
+            "pop2020": "6486.2050"
+        },
+        {
+            "name": "Morocco",
+            "energyConsumption": 904,
+            "pop2020": "36910.5600"
+        },
+        {
+            "name": "Indonesia",
+            "energyConsumption": 812,
+            "pop2020": "273523.6150"
+        },
+        {
+            "name": "India",
+            "energyConsumption": 805,
+            "pop2020": "1380004.3850"
+        },
+        {
+            "name": "Bolivia",
+            "energyConsumption": 743,
+            "pop2020": "11673.0210"
+        },
+        {
+            "name": "Zambia",
+            "energyConsumption": 717,
+            "pop2020": "18383.9550"
+        },
+        {
+            "name": "Philippines",
+            "energyConsumption": 696,
+            "pop2020": "109581.0780"
+        },
+        {
+            "name": "Honduras",
+            "energyConsumption": 620,
+            "pop2020": "9904.6070"
+        },
+        {
+            "name": "Zimbabwe",
+            "energyConsumption": 609,
+            "pop2020": "14862.9240"
+        },
+        {
+            "name": "North Korea",
+            "energyConsumption": 602,
+            "pop2020": "25778.8160"
+        },
+        {
+            "name": "Guatemala",
+            "energyConsumption": 578,
+            "pop2020": "17915.5680"
+        },
+        {
+            "name": "Nicaragua",
+            "energyConsumption": 568,
+            "pop2020": "6624.5540"
+        },
+        {
+            "name": "Sri Lanka",
+            "energyConsumption": 531,
+            "pop2020": "21413.2490"
+        },
+        {
+            "name": "Mozambique",
+            "energyConsumption": 479,
+            "pop2020": "31255.4350"
+        },
+        {
+            "name": "Pakistan",
+            "energyConsumption": 448,
+            "pop2020": "220892.3400"
+        },
+        {
+            "name": "Ghana",
+            "energyConsumption": 351,
+            "pop2020": "31072.9400"
+        },
+        {
+            "name": "Bangladesh",
+            "energyConsumption": 320,
+            "pop2020": "164689.3830"
+        },
+        {
+            "name": "Angola",
+            "energyConsumption": 312,
+            "pop2020": "32866.2720"
+        },
+        {
+            "name": "Ivory Coast",
+            "energyConsumption": 275,
+            "pop2020": "26378.2740"
+        },
+        {
+            "name": "Cameroon",
+            "energyConsumption": 275,
+            "pop2020": "26545.8630"
+        },
+        {
+            "name": "Cambodia",
+            "energyConsumption": 271,
+            "pop2020": "16718.9650"
+        },
+        {
+            "name": "Senegal",
+            "energyConsumption": 229,
+            "pop2020": "16743.9270"
+        },
+        {
+            "name": "Yemen",
+            "energyConsumption": 220,
+            "pop2020": "29825.9640"
+        },
+        {
+            "name": "Myanmar",
+            "energyConsumption": 215,
+            "pop2020": "54409.8000"
+        },
+        {
+            "name": "Republic of the Congo",
+            "energyConsumption": 203,
+            "pop2020": "5518.0870"
+        },
+        {
+            "name": "Kenya",
+            "energyConsumption": 164,
+            "pop2020": "53771.2960"
+        },
+        {
+            "name": "Togo",
+            "energyConsumption": 155,
+            "pop2020": "8278.7240"
+        },
+        {
+            "name": "Nepal",
+            "energyConsumption": 146,
+            "pop2020": "29136.8080"
+        },
+        {
+            "name": "Nigeria",
+            "energyConsumption": 145,
+            "pop2020": "206139.5890"
+        },
+        {
+            "name": "DR Congo",
+            "energyConsumption": 109,
+            "pop2020": "89561.4030"
+        },
+        {
+            "name": "Tanzania",
+            "energyConsumption": 104,
+            "pop2020": "59734.2180"
+        },
+        {
+            "name": "Benin",
+            "energyConsumption": 100,
+            "pop2020": "12123.2000"
+        },
+        {
+            "name": "Eritrea",
+            "energyConsumption": 89,
+            "pop2020": "3546.4210"
+        },
+        {
+            "name": "Ethiopia",
+            "energyConsumption": 69,
+            "pop2020": "114963.5880"
+        },
+        {
+            "name": "Niger",
+            "energyConsumption": 51,
+            "pop2020": "24206.6440"
+        },
+        {
+            "name": "South Sudan",
+            "energyConsumption": 44,
+            "pop2020": "11193.7250"
+        },
+        {
+            "name": "Haiti",
+            "energyConsumption": 39,
+            "pop2020": "11402.5280"
+        },
+        {
+            "name": "Sudan",
+            "energyConsumption": 0,
+            "pop2020": "43849.2600"
+        }
+    ]
+}

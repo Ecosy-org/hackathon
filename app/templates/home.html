@@ -28,7 +28,7 @@
                 $.ajax({url: `https://json.geoiplookup.io/`,
                         success: function(result){
                             let country = result.country_name;
-                            $.ajax({url: "/static/data.json",
+                            $.ajax({url: "/static/emission.json",
                                     success: function(result){
                                         let json_length = result.data.length;
                                         let emission = 0;
@@ -39,7 +39,7 @@
                                                 break;
                                             }
                                         }
-                                        popup += `Daily emissions per capita in ${country}: ${emission}<br>`;
+                                        popup += `Emissions of carbon dioxide per capita in ${country} (millions of tons): ${emission}<br>`;
                                         marker.bindPopup(popup).openPopup();
 
                                     }})
