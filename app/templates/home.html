@@ -6,7 +6,6 @@
     </div>
 
     <h1 id="loc"></h1>
-    <button id="aqi">Get me my Air Quality Index!</button>
     <script>
             var loc = document.getElementById('loc');
             var map = L.map('map').setView([0,0],3);
@@ -15,14 +14,21 @@
             }).addTo(map);
 
             //fetch(`https://api.breezometer.com/air-quality/v2/current-conditions?lat=${position.coords.latitude}&lon=${position.coords.longitude}&key=f76b6c689185412aa1297bb07fbdc24a`)
-            $("#aqi").click(function() {
-                var popup = "";
+            $(document).ready(function() {
+                var popup = "<ul>";
                 var marker
                 $.ajax({url: `https://api.waqi.info/feed/here/?token={{ token }}`,
                         success: function(result){
                             marker = L.marker([result.data.city.geo[0],result.data.city.geo[1]]).addTo(map);
-                            popup += `AQI level: ${result.data.aqi}`
-                            marker.bindPopup(popup).openPopup();
+                            popup += `<li class="list">AQI level: ${result.data.aqi} </li></ul>`
+
+                            var customOptions =
+                            {
+                            'maxWidth': '400',
+                            'width': '200',
+                            'className' : 'popupCustom'
+                            }
+                            marker.bindPopup(popup,customOptions).openPopup();
                             map.setView(new L.LatLng(result.data.city.geo[0], result.data.city.geo[1]),4)
                         }})
                 $.ajax({url: `https://json.geoiplookup.io/`,
@@ -39,7 +45,7 @@
                                                 break;
                                             }
                                         }
-                                        popup += `Daily emissions per capita in ${country}: ${emission}<br>`;
+                                        popup += `<li class="list">Daily emissions per capita in ${country}: ${emission}</li>`;
                                         marker.bindPopup(popup).openPopup();
 
                                     }})
