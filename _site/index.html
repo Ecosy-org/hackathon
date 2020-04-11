@@ -121,9 +121,46 @@
                 attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
             }).addTo(map);
 
-            //fetch(`https://api.breezometer.com/air-quality/v2/current-conditions?lat=${position.coords.latitude}&lon=${position.coords.longitude}&key=f76b6c689185412aa1297bb07fbdc24a`)
             $(document).ready(function() {
+                let energy_data = {};
+                $.ajax({url: "/static/energy.json", success: function(result) { 
+                    let json_length = result.data.length;
+                    for(let m = 0; m < json_length; m++)
+                    {
+                        energy_data[result.data[m].name] = result.data[m].energyConsumption;
+                    }
+                    }});
+                let carbon_data = {};
+                $.ajax({url: "/static/emission.json", success: function(result) { 
+                    let json_length = result.data.length;
+                    for(let m = 0; m < json_length; m++)
+                    {
+                        carbon_data[result.data[m].name] = result.data[m].perCapitaEmissions;
+                    }
+                }});
 
+                $.ajax({url:"/static/capital-latitude.json",
+                        success: function(result) {
+                            let x = result.length;
+                            for(let l = 0; l < x; l++)
+                            {
+                                marker = L.marker([result[l].CapitalLatitude,result[l].CapitalLongitude]).addTo(map);
+                                let country_energy;
+                                let country_emission;
+                                if (energy_data[result[l].CountryName]) { country_energy = `<br> Energy Consumption in a year per capita in ${result[l].CountryName} (kWh): ${energy_data[result[l].CountryName]}`}
+                                else country_energy = "";
+                                if (carbon_data[result[l].CountryName]) { country_emission = `<br> Emissions in a year of carbon dioxide per capita in  ${result[l].CountryName} (metric tons): ${carbon_data[result[l].CountryName]}`}
+                                else country_emission = "";
+                                let popup = `${result[l].CapitalName}${country_energy}${country_emission}`;
+                                var customOptions =
+                                {
+                                    'maxWidth': '400',
+                                    'width': '200',
+                                    'className' : 'popupCustom'
+                                }
+                                marker.bindPopup(popup, customOptions).openPopup();
+                            }
+                        }})
                 
                 $('.loading').show();
                 var popup = "<ul>";
@@ -147,43 +184,17 @@
                 $.ajax({url: `https://json.geoiplookup.io/`,
                         success: function(result){
                             let country = result.country_name;
-                            $.ajax({url: "/static/emission.json",
-                                    success: function(result){
-                                        let json_length = result.data.length;
-                                        let emission = 0;
-                                        for(let x = 0; x < json_length; x++)
-                                        {
-                                            if (result.data[x].name == country) {
-                                                emission = result.data[x].perCapitaEmissions;
-                                                break;
-                                            }
-                                        }
+                            popup += `<li class="list">Emissions in a year of carbon dioxide per capita in ${country} (metric tons): ${carbon_data[country]}</li>`;
+                            marker.bindPopup(popup).openPopup();
+                            let energy = 0;
+                            popup += `<li class="list">Energy Consumption in a year per capita in ${country} (kWh): ${energy_data[country]}</li>`;
+                            marker.bindPopup(popup).openPopup();
 
-                                        popup += `<li class="list">Emissions in a year of carbon dioxide per capita in ${country} (millions of tons): ${emission}</li>`;
-                                        marker.bindPopup(popup).openPopup();
-                                       
-                                    }})
-                            $.ajax({url: "/static/energy.json",
-                            success: function(result){
-                                let json_length = result.data.length;
-                                let energy = 0;
-                                for(let x = 0; x < json_length; x++)
-                                {
-                                    if (result.data[x].name == country) {
-                                        energy = result.data[x].energyConsumption;
-                                        break;
-                                    }
-                                }
-
-                                popup += `<li class="list">Energy Consumption in a year per capita in ${country} (kWh): ${energy}</li>`;
-                            
-                                marker.bindPopup(popup).openPopup();
-                                
-                            }})
                                     // we need to catch errors here if the country isn't in the json
                         }}) 
                         $('.loading').hide();
             })
+            
     </script>
 
 </body>
