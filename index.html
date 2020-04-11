@@ -11,10 +11,38 @@ title: Home
     
 
     <div class="modal fade" id="myModal">
-        <div class="modal-dialog modal-sm">
+        <div class="modal-dialog  modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1>Data</h1>
+                    <h1 class="modal-title">Data</h1>
+                </div>
+                <div class="modal-data">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 aqi-div data-div">
+                                <img src="aqi.png" class="img"/>
+                                <div class="data-text">
+                                    <h1 id="aqi-text" class="main-data"></h1>
+                                    <h3 id="aqi-intensity" class="mainSub-data"></h3>
+                                </div>
+                            </div>
+                            <div class="col-12 carbon-div data-div">
+                                <img src="carbon.png" class="img"/>
+                                <div class="data-text" >
+                                    <h1 id="carbon-text" class="main-data"></h1>
+                                    <h3 class="mainSub-data">METRIC TONNES</h3>
+                                </div>
+                                
+                            </div>
+                            <div class="col-12 energy-div data-div">
+                                <img src="energy.png" class="img"/>
+                                <div class="data-text ">
+                                    <h1 id="energy-text" class="main-data"></h1>
+                                    <h3 class="mainSub-data">KILOWAT / HOUR</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -31,7 +59,9 @@ title: Home
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
         integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
         crossorigin=""></script>
+    <script data-main="scripts/main" src="require.js"></script>
     <script>
+            var currentLOC;
             var loc = document.getElementById('loc');
             var map = L.map('map').setView([0,0],3);
             L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=0wIPgdmWVTqF7WuJjV0R',{
@@ -39,6 +69,20 @@ title: Home
             }).addTo(map);
 
             $(document).ready(function() {
+
+                function getAqiIntensity(aqi){
+                    if(aqi <= 50){
+                        return "Good";
+                    }
+                    else if(aqi >= 100 && aqi < 101){
+                        return "Moderate";
+                    }
+                    else if(aqi >= 101){
+                        return "poor";
+                    }
+                }
+
+
                 let energy_data = {};
                 $.ajax({url: "/static/energy.json", success: function(result) { 
                     let json_length = result.data.length;
@@ -106,6 +150,21 @@ title: Home
                             let energy = 0;
                             popup += `<li class="list">Energy Consumption in a year per capita in ${country} (kWh): ${energy_data[country]}</li>`;
                             marker.bindPopup(popup).openPopup();
+
+                            currentLOC = result.country_name;
+                            console.log(currentLOC)
+
+                            $('#carbon-text').html(carbon_data[currentLOC]);
+                            $('#energy-text').html(energy_data[currentLOC]);
+
+                            $.ajax({url: `https://api.waqi.info/feed/here/?token=155b3234f541426631705751c77f5717d9a23499`,
+                                    success: function(result){
+
+                                        var intensity = getAqiIntensity(result.data.aqi)
+                                        $('#aqi-text').html(result.data.aqi)
+                                        $('#aqi-intensity').html(intensity)
+                                }
+                            })
 
                                     // we need to catch errors here if the country isn't in the json
                         }}) 
