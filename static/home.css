@@ -119,7 +119,7 @@ h1, h2, h3 {
 .modal-title{
     font-size: 60px !important;
     text-align: center;
-    padding: 20px;
+    padding: 10px;
     color: rgb(1, 255, 1);
     width: 100%;
 }
@@ -155,4 +155,7 @@ h1, h2, h3 {
 }
 .mainSub-data{
     color: rgb(1, 255, 1);
+}
+.modal-header{
+    background-color: black !important;
 }
