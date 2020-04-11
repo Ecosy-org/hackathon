@@ -7,6 +7,17 @@
 
     <h1 id="loc"></h1>
     <div class="loading">Hello</div>
+    
+
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1>Data</h1>
+                </div>
+            </div>
+        </div>
+    </div> 
     <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -24,13 +35,16 @@
 
             //fetch(`https://api.breezometer.com/air-quality/v2/current-conditions?lat=${position.coords.latitude}&lon=${position.coords.longitude}&key=f76b6c689185412aa1297bb07fbdc24a`)
             $(document).ready(function() {
+
+                
                 $('.loading').show();
                 var popup = "<ul>";
                 var marker
                 $.ajax({url: `https://api.waqi.info/feed/here/?token={{ token }}`,
                         success: function(result){
                             marker = L.marker([result.data.city.geo[0],result.data.city.geo[1]]).addTo(map);
-                            popup += `<li class="list">AQI level: ${result.data.aqi} </li></ul>`
+                            popup += `<li class="list">AQI level: ${result.data.aqi} </li></ul>`;
+                            popup += '<button class="modalButton" data-toggle="modal" data-target="#myModal">See More</button>';
 
                             var customOptions =
                             {
@@ -74,6 +88,7 @@
                                 }
 
                                 popup += `<li class="list">Energy Consumption in a year per capita in ${country} (kWh): ${energy}</li>`;
+                            
                                 marker.bindPopup(popup).openPopup();
                                 
                             }})
