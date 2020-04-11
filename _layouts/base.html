@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>{{ title }}</title>
-    <link rel="shortcut icon" href="{{ url_for('static', filename='ECOSY_2.png') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
+    <title>{{ page.title }} - Ecosy</title>
+    <link rel="shortcut icon" href="static/ECOSY_2.png">
+    <link rel="stylesheet" type="text/css" href="/static/home.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
           integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
           crossorigin=""/>
@@ -61,7 +61,7 @@
 <body style="padding:0px;">
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <a class="navbar-brand" href="/">
-        <img src="{{ url_for('static', filename='ECOSY_2.png') }}" width="30" height="30"
+        <img src="/static/ECOSY_2.png" width="30" height="30"
              class="d-inline-block align-top"
              alt=""> ECOSY</a>
     <button
@@ -89,6 +89,6 @@
         </ul>
     </div>
 </nav>
-{% block content %}{% endblock %}
+{{ content }}
 </body>
 </html>

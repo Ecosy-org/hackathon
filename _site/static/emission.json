@@ -1,0 +1,124 @@
+{
+    "data": [
+        {
+            "name": "China",
+            "totalEmissions": 9040740000,
+            "perCapitaEmissions": "6.5900",
+            "pop2020": "1439323.7760"
+        },
+        {
+            "name": "United States",
+            "totalEmissions": 4997500000,
+            "perCapitaEmissions": "15.5300",
+            "pop2020": "331002.6510"
+        },
+        {
+            "name": "India",
+            "totalEmissions": "2066010000.0000",
+            "perCapitaEmissions": "1.5800",
+            "pop2020": "1380004.3850"
+        },
+        {
+            "name": "Russia",
+            "totalEmissions": 1468990000,
+            "perCapitaEmissions": "10.1900",
+            "pop2020": "145934.4620"
+        },
+        {
+            "name": "Japan",
+            "totalEmissions": 1141580000,
+            "perCapitaEmissions": "8.9900",
+            "pop2020": "126476.4610"
+        },
+        {
+            "name": "Germany",
+            "totalEmissions": 729770000,
+            "perCapitaEmissions": "8.9300",
+            "pop2020": "83783.9420"
+        },
+        {
+            "name": "South Korea",
+            "totalEmissions": 585990000,
+            "perCapitaEmissions": "11.5800",
+            "pop2020": "51269.1850"
+        },
+        {
+            "name": "Iran",
+            "totalEmissions": 552400000,
+            "perCapitaEmissions": "6.9800",
+            "pop2020": "83992.9490"
+        },
+        {
+            "name": "Canada",
+            "totalEmissions": 549230000,
+            "perCapitaEmissions": "15.3200",
+            "pop2020": "37742.1540"
+        },
+        {
+            "name": "Saudi Arabia",
+            "totalEmissions": "531460000.0000",
+            "perCapitaEmissions": "16.8500",
+            "pop2020": "34813.8710"
+        },
+        {
+            "name": "Brazil",
+            "totalEmissions": 450790000,
+            "perCapitaEmissions": "2.1700",
+            "pop2020": "212559.4170"
+        },
+        {
+            "name": "Mexico",
+            "totalEmissions": 442310000,
+            "perCapitaEmissions": "3.6600",
+            "pop2020": "128932.7530"
+        },
+        {
+            "name": "Indonesia",
+            "totalEmissions": 441910000,
+            "perCapitaEmissions": "1.7200",
+            "pop2020": "273523.6150"
+        },
+        {
+            "name": "South Africa",
+            "totalEmissions": 427570000,
+            "perCapitaEmissions": "7.7700",
+            "pop2020": "59308.6900"
+        },
+        {
+            "name": "United Kingdom",
+            "totalEmissions": 389750000,
+            "perCapitaEmissions": "5.9900",
+            "pop2020": "67886.0110"
+        },
+        {
+            "name": "Australia",
+            "totalEmissions": 380930000,
+            "perCapitaEmissions": "15.8300",
+            "pop2020": "25499.8840"
+        },
+        {
+            "name": "Italy",
+            "totalEmissions": 330750000,
+            "perCapitaEmissions": "5.4500",
+            "pop2020": "60461.8260"
+        },
+        {
+            "name": "Turkey",
+            "totalEmissions": 317220000,
+            "perCapitaEmissions": "4.1000",
+            "pop2020": "84339.0670"
+        },
+        {
+            "name": "France",
+            "totalEmissions": 290490000,
+            "perCapitaEmissions": "4.3700",
+            "pop2020": "65273.5110"
+        },
+        {
+            "name": "Poland",
+            "totalEmissions": 282400000,
+            "perCapitaEmissions": "7.3400",
+            "pop2020": "37846.6110"
+        }
+    ]
+}

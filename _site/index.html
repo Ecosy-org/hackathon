@@ -1,6 +1,94 @@
-{% extends "base.html" %}
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Home - Ecosy</title>
+    <link rel="shortcut icon" href="static/ECOSY_2.png">
+    <link rel="stylesheet" type="text/css" href="/static/home.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+          integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+          crossorigin=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:wght@700&display=swap" rel="stylesheet">       
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+            integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+            crossorigin=""></script>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <style>
+        #map {
+            margin: 0px !important;
+            width: 100%;
+            height: 900px;
+        }
+        .navbar{
+            background-color: black !important;
+            padding: 20px;
+        }
+        .popupCustom .leaflet-popup-tip,
+        .popupCustom .leaflet-popup-content-wrapper {
+            background:black;
+            color: rgb(1, 255, 1);
+            font-weight: bold;
+            
+        }
+        .list{
+            font-size: 18px;
+        }
+        .modalButton{
+            
+            text-align: center;
+            padding: 5px;
+            color: rgb(1, 255, 1);
+            border: 1px solid rgb(1, 255, 1);
+            background-color: black;
+            width: 40%;
+            margin-left: 10%
+        }
+        .modalButton:hover{
+            background-color: rgb(1, 255, 1);
+            color: black;
+        }
 
-{% block content %}
+    </style>
+</head>
+
+<body style="padding:0px;">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="/">
+        <img src="/static/ECOSY_2.png" width="30" height="30"
+             class="d-inline-block align-top"
+             alt=""> ECOSY</a>
+    <button
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            class="navbar-toggler"
+            data-target="#navbarSupportedContent"
+            data-toggle="collapse"
+            type="button">
+        <span class="navbar-toggler-icon"> </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="mr-auto"></div>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a href="#"><button type="button" class="btn btn-outline-primary"style='margin-right:16px'>Home</button></a>
+            </li>
+            <li class="nav-item">
+                <a href="/sources"><button type="button" class="btn btn-outline-success"style='margin-right:16px'>Sources</button></a>
+            </li>
+            <li class="nav-item">
+                <a href="/about"><button type="button" class="btn btn-outline-danger"style='margin-right:16px'>About</button></a>
+            </li>
+        </ul>
+    </div>
+</nav>
     <div id="map">
 
     </div>
@@ -39,8 +127,8 @@
                 
                 $('.loading').show();
                 var popup = "<ul>";
-                var marker
-                $.ajax({url: `https://api.waqi.info/feed/here/?token={{ token }}`,
+                var marker;
+                $.ajax({url: `https://api.waqi.info/feed/here/?token=155b3234f541426631705751c77f5717d9a23499`,
                         success: function(result){
                             marker = L.marker([result.data.city.geo[0],result.data.city.geo[1]]).addTo(map);
                             popup += `<li class="list">AQI level: ${result.data.aqi} </li></ul>`;
@@ -97,4 +185,6 @@
                         $('.loading').hide();
             })
     </script>
-{% endblock %}
+
+</body>
+</html>
