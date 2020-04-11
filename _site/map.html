@@ -163,6 +163,15 @@
 
             $(document).ready(function() {
 
+                var blackIcon = new L.Icon({
+                    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-black.png',
+                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    shadowSize: [41, 41]
+                });
+
                 function getAqiIntensity(aqi){
                     if(aqi <= 50){
                         return "GOOD";
@@ -198,7 +207,7 @@
                             let x = result.length;
                             for(let l = 0; l < x; l++)
                             {
-                                marker = L.marker([result[l].CapitalLatitude,result[l].CapitalLongitude]).addTo(map);
+                                marker = L.marker([result[l].CapitalLatitude,result[l].CapitalLongitude], {icon: blackIcon}).addTo(map);
                                 let country_energy;
                                 let country_emission;
                                 if (energy_data[result[l].CountryName]) { country_energy = `<br> Energy Consumption in a year per capita in ${result[l].CountryName} (kWh): ${energy_data[result[l].CountryName]}`}
@@ -221,7 +230,7 @@
                 var marker;
                 $.ajax({url: `https://api.waqi.info/feed/here/?token=155b3234f541426631705751c77f5717d9a23499`,
                         success: function(result){
-                            marker = L.marker([result.data.city.geo[0],result.data.city.geo[1]]).addTo(map);
+                            marker = L.marker([result.data.city.geo[0],result.data.city.geo[1]], {icon: blackIcon}).addTo(map);
                             popup += `<li class="list">AQI level: ${result.data.aqi} </li></ul>`;
                             popup += '<button class="modalButton" data-toggle="modal" data-target="#myModal">See More</button>';
 

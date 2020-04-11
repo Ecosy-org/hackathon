@@ -94,10 +94,31 @@ h1, h2, h3 {
 }
 
 .content {
-    width: 80%;
-    margin: 50px auto;
+    width: 100%;
 }
-
+.source-parent{
+    height: 93%;
+    background-color: rgb(29, 29, 29);
+}
+.sources-Div{
+    padding-top: 100px;
+}
+.sources-title{
+    font-size: 80px;
+    color: white;
+}
+.sources-list{
+    padding: 30px;
+    border-radius: 12px;
+}
+.source{
+    font-size: 30px;
+    color: rgb(0, 170, 0);
+    text-decoration: none;
+}
+.source:hover{
+    color: white;
+}
 .modal {
     padding: 0 !important;
   }
