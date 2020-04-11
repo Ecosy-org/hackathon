@@ -14,27 +14,33 @@ title: Home
         <div class="modal-dialog  modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title">Data</h1>
+                    <h1 class="modal-title" id="modal-title"></h1>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">CLOSE</span>
+                    </button>
                 </div>
                 <div class="modal-data">
-                    <div class="container">
+                    <div class="container-fluid">
                         <div class="row">
-                            <div class="col-12 aqi-div data-div">
+                            <div class="col-1"></div>
+                            <div class="col-3 aqi-div data-div shadow-lg bg-white rounded">
                                 <img src="aqi.png" class="img"/>
                                 <div class="data-text">
                                     <h1 id="aqi-text" class="main-data"></h1>
                                     <h3 id="aqi-intensity" class="mainSub-data"></h3>
                                 </div>
+                                
                             </div>
-                            <div class="col-12 carbon-div data-div">
+                            <div class="col-3 carbon-div data-div shadow-lg bg-white rounded">
                                 <img src="carbon.png" class="img"/>
                                 <div class="data-text" >
                                     <h1 id="carbon-text" class="main-data"></h1>
                                     <h3 class="mainSub-data">METRIC TONNES</h3>
                                 </div>
                                 
+                                                 
                             </div>
-                            <div class="col-12 energy-div data-div">
+                            <div class="col-3 energy-div data-div shadow-lg bg-white rounded">
                                 <img src="energy.png" class="img"/>
                                 <div class="data-text ">
                                     <h1 id="energy-text" class="main-data"></h1>
@@ -156,6 +162,7 @@ title: Home
 
                             $('#carbon-text').html(carbon_data[currentLOC]);
                             $('#energy-text').html(energy_data[currentLOC]);
+                            $('#modal-title').html(currentLOC.toUpperCase());
 
                             $.ajax({url: `https://api.waqi.info/feed/here/?token=155b3234f541426631705751c77f5717d9a23499`,
                                     success: function(result){
