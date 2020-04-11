@@ -14,3 +14,8 @@ h1, h2, h3 {
     width: 80%;
     margin: 50px auto;
 }
+#cta {
+    position: absolute;
+    top: 500px;
+    z-index: 99;
+}
