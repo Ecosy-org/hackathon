@@ -161,6 +161,8 @@
                 attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
             }).addTo(map);
 
+            console.log("map added")
+
             $(document).ready(function() {
 
                 var blackIcon = new L.Icon({
@@ -214,6 +216,8 @@
                     energy_data = result;
                 }});
 
+                console.log("energy and carbon data loaded from json")
+
                 $.ajax({url:"/static/capital-latitude.json",
                         success: function(result) {
                             let x = result.length;
@@ -235,6 +239,7 @@
                                 }
                                 marker.bindPopup(popup, customOptions).openPopup();
                             }
+                            console.log("added all markers from capital latitude.json")
                         }})
                 
                 $('.loading').show();
@@ -254,6 +259,7 @@
                             }
                             marker.bindPopup(popup,customOptions).openPopup();
                             map.setView(new L.LatLng(result.data.city.geo[0], result.data.city.geo[1]),4)
+                            console.log("added current location marker and popup")
                         }})
 
                 $.ajax({url: `https://json.geoiplookup.io/`,
@@ -268,6 +274,8 @@
                             currentLOC = result.country_name;
                             console.log(currentLOC)
 
+                            console.log("loaded data from json.geoiplookup")
+
                             $('#carbon-text').html(carbon_data[currentLOC.toLowerCase()]);
                             $('#energy-text').html(energy_data[currentLOC.toLowerCase()]);
                             $('#modal-title').html(currentLOC.toUpperCase())
@@ -278,6 +286,8 @@
                                         var intensity = getAqiIntensity(result.data.aqi)
                                         $('#aqi-text').html(result.data.aqi)
                                         $('#aqi-intensity').html(intensity)
+                                    
+                                        console.log("loaded three cards current location")
                                 }
                             })
 
