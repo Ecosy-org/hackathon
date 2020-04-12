@@ -171,7 +171,8 @@
 
             var energy_data;
             var carbon_data;
-            $(document).ready(function() {
+            (function($) {
+                $(function(){
 
                 var blackIcon = new L.Icon({
                     iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-black.png',
@@ -305,10 +306,11 @@
                         }}) 
                     }})
                         $('.loading').hide();
-            })
             $(window).on("load", function () {
             $(".loader-wrapper").fadeOut("slow");
-        });
+            })
+        })
+        }(jQuery));
     </script>
 
 </body>
