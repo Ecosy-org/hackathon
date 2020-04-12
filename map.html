@@ -76,6 +76,8 @@ title: Data
 
             console.log("map added")
 
+            var energy_data;
+            var carbon_data;
             $(document).ready(function() {
 
                 var blackIcon = new L.Icon({
@@ -118,8 +120,7 @@ title: Data
                     $('#modal-title').html(country.toUpperCase())
                 }
                 
-                let energy_data;
-                let carbon_data;
+
                 $.ajax({url: "/static/json/carbon_data.json", success: function(result) { 
                         carbon_data = result;
                     }});
