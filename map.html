@@ -127,7 +127,7 @@ title: Data
 
                 console.log("energy and carbon data loaded from json")
 
-                $.ajax({url:"/static/capital-latitude.json",
+                $.ajax({cache: false,url:"/static/capital-latitude.json",
                         success: function(result) {
                             let x = result.length;
                             console.log('starting to add all markers')
