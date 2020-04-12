@@ -102,6 +102,7 @@
     </div>
 
     <h1 id="loc"></h1>
+    <button id="getMap">Get details</button>
     <div class="loading">Hello</div>
     
 
@@ -171,8 +172,8 @@
 
             var energy_data;
             var carbon_data;
-            (function($) {
-                $(function(){
+
+            $('#getMap').click(function(){
 
                 var blackIcon = new L.Icon({
                     iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-black.png',
@@ -310,7 +311,6 @@
             $(".loader-wrapper").fadeOut("slow");
             })
         })
-        }(jQuery));
     </script>
 
 </body>
