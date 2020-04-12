@@ -174,20 +174,20 @@ title: Data
 
                 $.ajax({url: `https://json.geoiplookup.io/`,
                         success: function(result){
-                            let country = result.country_name;
+                            let country = result.country_name.toLowerCase();
                             popup += `<li class="list">Emissions in a year of carbon dioxide per capita in ${country} (metric tons): ${carbon_data[country]}</li>`;
                             marker.bindPopup(popup).openPopup();
                             let energy = 0;
                             popup += `<li class="list">Energy Consumption in a year per capita in ${country} (kWh): ${energy_data[country]}</li>`;
                             marker.bindPopup(popup).openPopup();
 
-                            currentLOC = result.country_name;
-                            console.log(currentLOC)
+                            currentLOC = result.country_name.toLowerCase();
+                            console.log("country: ",currentLOC)
 
                             console.log("loaded data from json.geoiplookup")
 
-                            $('#carbon-text').html(carbon_data[currentLOC.toLowerCase()]);
-                            $('#energy-text').html(energy_data[currentLOC.toLowerCase()]);
+                            $('#carbon-text').html(carbon_data[currentLOC]);
+                            $('#energy-text').html(energy_data[currentLOC]);
                             $('#modal-title').html(currentLOC.toUpperCase())
 
                             $.ajax({url: `https://api.waqi.info/feed/here/?token=155b3234f541426631705751c77f5717d9a23499`,
