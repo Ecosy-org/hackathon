@@ -120,17 +120,17 @@ title: Data
                 
                 let energy_data;
                 let carbon_data;
-                $.ajax({url: "/static/carbon_data.json", success: function(result) { 
+                $.ajax({url: "/static/json/carbon_data.json", success: function(result) { 
                         carbon_data = result;
                     }});
                 
-                $.ajax({url: "/static/energy_data.json", success: function(result) { 
+                $.ajax({url: "/static/json/energy_data.json", success: function(result) { 
                     energy_data = result;
                 }});
 
                 console.log("energy and carbon data loaded from json")
 
-                $.ajax({cache: false,url:"/static/capital-latitude.json",
+                $.ajax({cache: false,url:"/static/json/capital-latitude.json",
                         success: function(result) {
                             let x = result.length;
                             console.log('starting to add all markers')
@@ -179,6 +179,7 @@ title: Data
                         success: function(result){
                             console.log('starting to get country from ip')
                             let country = result.country_name.toLowerCase();
+                            console.log(country)
                             popup += `<li class="list">Emissions in a year of carbon dioxide per capita in ${country} (metric tons): ${carbon_data[country]}</li>`;
                             marker.bindPopup(popup).openPopup();
                             let energy = 0;
