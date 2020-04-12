@@ -114,30 +114,14 @@ title: Data
                 }
 
 
-                let energy_data = {};
-
-                $.ajax({url: "./carbon_data.json", success: function(result) { 
-                        console.log("carbon data: " + result['India'])
+                let energy_data;
+                let carbon_data;
+                $.ajax({url: "/static/carbon_data.json", success: function(result) { 
+                        carbon_data = result;
                     }});
                 
-                    $.ajax({url: "./energy_data.json", success: function(result) { 
-                        console.log("energy data: " +  result['India'])
-                    }});
-
-                $.ajax({url: "/static/energy.json", success: function(result) { 
-                    let json_length = result.data.length;
-                    for(let m = 0; m < json_length; m++)
-                    {
-                        energy_data[result.data[m].name] = result.data[m].energyConsumption;
-                    }
-                    }});
-                let carbon_data = {};
-                $.ajax({url: "/static/emission.json", success: function(result) { 
-                    let json_length = result.data.length;
-                    for(let m = 0; m < json_length; m++)
-                    {
-                        carbon_data[result.data[m].name] = result.data[m].perCapitaEmissions;
-                    }
+                $.ajax({url: "/static/energy_data.json", success: function(result) { 
+                    energy_data = result;
                 }});
 
                 $.ajax({url:"/static/capital-latitude.json",
@@ -148,9 +132,9 @@ title: Data
                                 marker = L.marker([result[l].CapitalLatitude,result[l].CapitalLongitude], {icon: blackIcon}).addTo(map);
                                 let country_energy;
                                 let country_emission;
-                                if (energy_data[result[l].CountryName]) { country_energy = `<br> Energy Consumption in a year per capita in ${result[l].CountryName} (kWh): ${energy_data[result[l].CountryName]}`}
+                                if (energy_data[result[l].CountryName.toLowerCase()]) { country_energy = `<br> Energy Consumption in a year per capita in ${result[l].CountryName.toLowerCase()} (kWh): ${energy_data[result[l].CountryName.toLowerCase()]}`}
                                 else country_energy = "";
-                                if (carbon_data[result[l].CountryName]) { country_emission = `<br> Emissions in a year of carbon dioxide per capita in  ${result[l].CountryName} (metric tons): ${carbon_data[result[l].CountryName]}`}
+                                if (carbon_data[result[l].CountryName.toLowerCase()]) { country_emission = `<br> Emissions in a year of carbon dioxide per capita in  ${result[l].CountryName.toLowerCase()} (metric tons): ${carbon_data[result[l].CountryName.toLowerCase()]}`}
                                 else country_emission = "";
                                 let popup = `${result[l].CapitalName}${country_energy}${country_emission}`;
                                 var customOptions =
@@ -194,8 +178,8 @@ title: Data
                             currentLOC = result.country_name;
                             console.log(currentLOC)
 
-                            $('#carbon-text').html(carbon_data[currentLOC]);
-                            $('#energy-text').html(energy_data[currentLOC]);
+                            $('#carbon-text').html(carbon_data[currentLOC.toLowerCase()]);
+                            $('#energy-text').html(energy_data[currentLOC.toLowerCase()]);
                             $('#modal-title').html(currentLOC.toUpperCase())
 
                             $.ajax({url: `https://api.waqi.info/feed/here/?token=155b3234f541426631705751c77f5717d9a23499`,
