@@ -152,7 +152,6 @@
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
         integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
         crossorigin=""></script>
-    <script data-main="scripts/main" src="require.js"></script>
     <script>
             var currentLOC;
             var loc = document.getElementById('loc');
@@ -221,14 +220,15 @@
                 $.ajax({url:"/static/capital-latitude.json",
                         success: function(result) {
                             let x = result.length;
+                            console.log('starting to add alll markers')
                             for(let l = 0; l < x; l++)
                             {
                                 marker = L.marker([result[l].CapitalLatitude,result[l].CapitalLongitude], {icon: blackIcon}).addTo(map);
                                 let country_energy;
                                 let country_emission;
-                                if (energy_data[result[l].CountryName.toLowerCase()]) { country_energy = `<br> Energy Consumption in a year per capita in ${result[l].CountryName.toLowerCase()} (kWh): ${energy_data[result[l].CountryName.toLowerCase()]}`}
+                                if (energy_data[result[l].CountryName.toLowerCase()]) { country_energy = `<br> Energy Consumption in a year per capita in ${result[l].CountryName} (kWh): ${energy_data[result[l].CountryName.toLowerCase()]}`}
                                 else country_energy = "";
-                                if (carbon_data[result[l].CountryName.toLowerCase()]) { country_emission = `<br> Emissions in a year of carbon dioxide per capita in  ${result[l].CountryName.toLowerCase()} (metric tons): ${carbon_data[result[l].CountryName.toLowerCase()]}`}
+                                if (carbon_data[result[l].CountryName.toLowerCase()]) { country_emission = `<br> Emissions in a year of carbon dioxide per capita in  ${result[l].CountryName} (metric tons): ${carbon_data[result[l].CountryName.toLowerCase()]}`}
                                 else country_emission = "";
                                 let popup = `${result[l].CapitalName}${country_energy}${country_emission}`;
                                 var customOptions =
