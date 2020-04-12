@@ -130,7 +130,7 @@ title: Data
                 $.ajax({url:"/static/capital-latitude.json",
                         success: function(result) {
                             let x = result.length;
-                            console.log('starting to add alll markers')
+                            console.log('starting to add all markers')
                             for(let l = 0; l < x; l++)
                             {
                                 marker = L.marker([result[l].CapitalLatitude,result[l].CapitalLongitude], {icon: blackIcon}).addTo(map);
@@ -182,6 +182,7 @@ title: Data
                             marker.bindPopup(popup).openPopup();
 
                             currentLOC = result.country_name.toLowerCase();
+                            console.log("showing country data in 1 sec");
                             console.log("country: ",currentLOC)
 
                             console.log("loaded data from json.geoiplookup")
