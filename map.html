@@ -86,12 +86,31 @@ title: Data
                     if(aqi <= 50){
                         return "GOOD";
                     }
-                    else if(aqi >= 100 && aqi < 101){
-                        return "MODERATE";
+
+                    else if(aqi > 50 && aqi < 100){
+                        return "MODERATE"
                     }
-                    else if(aqi >= 101){
+                    else if(aqi >= 100 && aqi < 151){
+                        return "UNHEALTHY";
+                    }
+                    else if(aqi >= 151){
                         return "POOR";
                     }
+                }
+
+                function updateModal(country,energy_data,carbon_data,lat,long){
+
+                    $.ajax({url: `https://api.waqi.info/feed/geo:${lat};${long}/?token=155b3234f541426631705751c77f5717d9a23499`,
+                        success: function(result){
+
+                            var intensity = getAqiIntensity(result.data.aqi)
+                            $('#aqi-text').html(result.data.aqi)
+                            $('#aqi-intensity').html(intensity)
+                        }
+                    })
+                    $('#carbon-text').html(carbon_data[country]);
+                    $('#energy-text').html(energy_data[country]);
+                    $('#modal-title').html(country.toUpperCase())
                 }
 
 
