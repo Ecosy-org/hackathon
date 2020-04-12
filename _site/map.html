@@ -102,7 +102,12 @@
     </div>
 
     <h1 id="loc"></h1>
+<<<<<<< HEAD
     <div class="loading"></div>
+=======
+    <button id="getMap">Get details</button>
+    <div class="loading">Hello</div>
+>>>>>>> 697a43e6d9d07cd52c766db57ca41df6e4245667
     
 
     <div class="modal fade" id="myModal">
@@ -172,9 +177,7 @@
             var energy_data;
             var carbon_data;
 
-            $('#getMap').click(function(){
-
-                var blackIcon = new L.Icon({
+            var blackIcon = new L.Icon({
                     iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-black.png',
                     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
                     iconSize: [25, 41],
@@ -186,14 +189,9 @@
                 $.ajax({url: "/static/json/carbon_data.json", success: function(result) { 
                         carbon_data = result;
                     }});
-                
                 $.ajax({url: "/static/json/energy_data.json", success: function(result) { 
                     energy_data = result;
-                }});
-
-                console.log("energy and carbon data loaded from json")
-
-                $.ajax({cache: false,url:"/static/json/capital-latitude.json",
+                    $.ajax({cache: false,url:"/static/json/capital-latitude.json",
                         success: function(result) {
                             let x = result.length;
                             console.log('starting to add all markers')
@@ -218,7 +216,13 @@
                             }
                             console.log("added all markers from capital latitude.json")
                         }})
+                }});
+
+                console.log("energy and carbon data loaded from json")
+
                 
+
+            $('#getMap').click(function(){
                 $('.loading').show();
                 var popup = "<ul>";
                 var marker;
@@ -227,44 +231,43 @@
                         success: function(result){
                             marker = L.marker([result.data.city.geo[0],result.data.city.geo[1]], {icon: blackIcon}).addTo(map);
                             popup += `<li class="list">AQI level: ${result.data.aqi} </li></ul>`;
-                            var customOptions =
-                            {
-                            'maxWidth': '400',
-                            'width': '200',
-                            'className' : 'popupCustom'
-                            }
-                            marker.bindPopup(popup,customOptions).openPopup();
                             locLat = result.data.city.geo[0];
                             locLong = result.data.city.geo[1];
                             map.setView(new L.LatLng(locLat, locLong),4)
-                            console.log("added current location marker and popup")
+                            let country;
+                            $.ajax({url: `https://json.geoiplookup.io/`,
+                                success: function(result){
+                                    console.log('starting to get country from ip')
+                                    country = result.country_name.toLowerCase();
+                                    console.log(country)
+                                    popup += `<li class="list">Emissions in a year of carbon dioxide per capita in ${country} (metric tons): ${carbon_data[country]}</li>`;
+                                    let energy = 0;
+                                    popup += `<li class="list">Energy Consumption in a year per capita in ${country} (kWh): ${energy_data[country]}</li>`;
+                                    popup += `<button class="modalButton" data-toggle="modal" onclick="populateModal('${country}', ${locLat}, ${locLong})" data-target="#myModal">See More</button>'`;
+                                    var customOptions =
+                                    {
+                                        'maxWidth': '400',
+                                        'width': '200',
+                                        'className' : 'popupCustom'
+                                    }
+                                    currentLOC = result.country_name.toLowerCase();
+                                    console.log("showing country data in 1 sec");
+                                    console.log("country: ",currentLOC)
+                                    marker.bindPopup(popup,customOptions).openPopup();
+                            }})
                         }})
-                        
-                let country;
-                $.ajax({url: `https://json.geoiplookup.io/`,
-                        success: function(result){
-                            console.log('starting to get country from ip')
-                            country = result.country_name.toLowerCase();
-                            console.log(country)
-                            popup += `<li class="list">Emissions in a year of carbon dioxide per capita in ${country} (metric tons): ${carbon_data[country]}</li>`;
-                            marker.bindPopup(popup).openPopup();
-                            let energy = 0;
-                            popup += `<li class="list">Energy Consumption in a year per capita in ${country} (kWh): ${energy_data[country]}</li>`;
-                            marker.bindPopup(popup).openPopup();
+                    
 
-                            currentLOC = result.country_name.toLowerCase();
-                            console.log("showing country data in 1 sec");
-                            console.log("country: ",currentLOC)
-                            popup += `<button class="modalButton" data-toggle="modal" onclick="populateModal("${country}", ${locLat}, ${locLong})" data-target="#myModal">See More</button>'`;
-                            marker.bindPopup(popup).openPopup();
-                    }})
 
-                        $('.loading').hide();
+                $('.loading').hide();
             $(window).on("load", function () {
             $(".loader-wrapper").fadeOut("slow");
             })
         })
+<<<<<<< HEAD
 
+=======
+>>>>>>> 697a43e6d9d07cd52c766db57ca41df6e4245667
 
         function populateModal(locCountry, lat, lon){
 
