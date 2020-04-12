@@ -9,8 +9,7 @@ title: Data
     </div>
 
     <h1 id="loc"></h1>
-    <button id="getMap">Get details</button>
-    <div class="loading">Hello</div>
+    <div class="loading"></div>
     
 
     <div class="modal fade" id="myModal">
@@ -89,39 +88,7 @@ title: Data
                     iconAnchor: [12, 41],
                     popupAnchor: [1, -34],
                     shadowSize: [41, 41]
-                });
-
-                function getAqiIntensity(aqi){
-                    if(aqi <= 50){
-                        return "GOOD";
-                    }
-
-                    else if(aqi > 50 && aqi < 100){
-                        return "MODERATE"
-                    }
-                    else if(aqi >= 100 && aqi < 151){
-                        return "UNHEALTHY";
-                    }
-                    else if(aqi >= 151){
-                        return "POOR";
-                    }
-                }
-
-                function updateModal(country,energy_data,carbon_data,lat,long){
-
-                    $.ajax({url: `https://api.waqi.info/feed/geo:${lat};${long}/?token=155b3234f541426631705751c77f5717d9a23499`,
-                        success: function(result){
-
-                            var intensity = getAqiIntensity(result.data.aqi)
-                            $('#aqi-text').html(result.data.aqi)
-                            $('#aqi-intensity').html(intensity)
-                        }
-                    }) 
-                    $('#carbon-text').html(carbon_data[country]);
-                    $('#energy-text').html(energy_data[country]);
-                    $('#modal-title').html(country.toUpperCase())
-                }
-                
+                });  
 
                 $.ajax({url: "/static/json/carbon_data.json", success: function(result) { 
                         carbon_data = result;
@@ -146,7 +113,8 @@ title: Data
                                 else country_energy = "";
                                 if (carbon_data[result[l].CountryName.toLowerCase()]) { country_emission = `<br> Emissions in a year of carbon dioxide per capita in  ${result[l].CountryName} (metric tons): ${carbon_data[result[l].CountryName.toLowerCase()]}`}
                                 else country_emission = "";
-                                let popup = `${result[l].CapitalName}${country_energy}${country_emission}`;
+                                let popup = `${result[l].CapitalName}${country_energy}${country_emission}<br>
+                                            <button class="modalButton" data-toggle="modal" onclick="populateModal('${result[l].CountryName}', ${result[l].CapitalLatitude}, ${result[l].CapitalLongitude})" data-target="#myModal">See More</button>`;
                                 var customOptions =
                                 {
                                     'maxWidth': '400',
@@ -161,12 +129,11 @@ title: Data
                 $('.loading').show();
                 var popup = "<ul>";
                 var marker;
+                let locLat, locLong;
                 $.ajax({url: `https://api.waqi.info/feed/here/?token=155b3234f541426631705751c77f5717d9a23499`,
                         success: function(result){
                             marker = L.marker([result.data.city.geo[0],result.data.city.geo[1]], {icon: blackIcon}).addTo(map);
                             popup += `<li class="list">AQI level: ${result.data.aqi} </li></ul>`;
-                            popup += '<button class="modalButton" data-toggle="modal" data-target="#myModal">See More</button>';
-
                             var customOptions =
                             {
                             'maxWidth': '400',
@@ -174,14 +141,17 @@ title: Data
                             'className' : 'popupCustom'
                             }
                             marker.bindPopup(popup,customOptions).openPopup();
-                            map.setView(new L.LatLng(result.data.city.geo[0], result.data.city.geo[1]),4)
+                            locLat = result.data.city.geo[0];
+                            locLong = result.data.city.geo[1];
+                            map.setView(new L.LatLng(locLat, locLong),4)
                             console.log("added current location marker and popup")
+                        }})
                         
-
+                let country;
                 $.ajax({url: `https://json.geoiplookup.io/`,
                         success: function(result){
                             console.log('starting to get country from ip')
-                            let country = result.country_name.toLowerCase();
+                            country = result.country_name.toLowerCase();
                             console.log(country)
                             popup += `<li class="list">Emissions in a year of carbon dioxide per capita in ${country} (metric tons): ${carbon_data[country]}</li>`;
                             marker.bindPopup(popup).openPopup();
@@ -192,32 +162,46 @@ title: Data
                             currentLOC = result.country_name.toLowerCase();
                             console.log("showing country data in 1 sec");
                             console.log("country: ",currentLOC)
-
-                            console.log("loaded data from json.geoiplookup")
-
-                            $('#carbon-text').html(carbon_data[currentLOC]);
-                            $('#energy-text').html(energy_data[currentLOC]);
-                            $('#modal-title').html(currentLOC.toUpperCase())
-
-                            $.ajax({url: `https://api.waqi.info/feed/here/?token=155b3234f541426631705751c77f5717d9a23499`,
-                                    success: function(result){
-
-                                        var intensity = getAqiIntensity(result.data.aqi)
-                                        $('#aqi-text').html(result.data.aqi)
-                                        $('#aqi-intensity').html(intensity)
-                                    
-                                        console.log("loaded three cards current location")
-                                }
-                            })
-
-                                    // we need to catch errors here if the country isn't in the json
-                        }}) 
+                            popup += `<button class="modalButton" data-toggle="modal" onclick="populateModal("${country}", ${locLat}, ${locLong})" data-target="#myModal">See More</button>'`;
+                            marker.bindPopup(popup).openPopup();
                     }})
+
                         $('.loading').hide();
             $(window).on("load", function () {
             $(".loader-wrapper").fadeOut("slow");
             })
         })
+
+
+        function populateModal(locCountry, lat, lon){
+
+                    $.ajax({url: `https://api.waqi.info/feed/geo:${lat};${lon}/?token=155b3234f541426631705751c77f5717d9a23499`,
+                        success: function(result) {
+                            var intensity = getAqiIntensity(result.data.aqi)
+                            $('#aqi-text').html(result.data.aqi)
+                            $('#aqi-intensity').html(intensity)
+                        }
+                    }) 
+                    $('#carbon-text').html(carbon_data[locCountry.toLowerCase()]);
+                    $('#energy-text').html(energy_data[locCountry.toLowerCase()]);
+                    $('#modal-title').html(locCountry)
+                }
+
+        function getAqiIntensity(aqi){
+            if(aqi <= 50){
+                return "GOOD";
+            }
+
+            else if(aqi > 50 && aqi < 100){
+                return "MODERATE"
+            }
+            else if(aqi >= 100 && aqi < 151){
+                return "UNHEALTHY";
+            }
+            else if(aqi >= 151){
+                return "POOR";
+            }
+        }
     </script>
 
 </body>
