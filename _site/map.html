@@ -84,14 +84,19 @@
                 <a href="/"><button type="button" class="btn btn-outline-primary"style='margin-right:16px'>Home</button></a>
             </li>
             <li class="nav-item">
+                <a href="/map"><button type="button" class="btn btn-outline-warning"style='margin-right:16px'>Map</button></a>
+            </li>
+            <li class="nav-item">
                 <a href="/sources"><button type="button" class="btn btn-outline-success"style='margin-right:16px'>Sources</button></a>
             </li>
             <li class="nav-item">
-                <a href="/about"><button type="button" class="btn btn-outline-danger"style='margin-right:16px'>About</button></a>
+                <a href="/about"><button type="button" class="btn btn-outline-light"style='margin-right:16px'>About</button></a>
             </li>
         </ul>
     </div>
 </nav>
+<body>
+<div class="card" style="width: 95%;">
     <div id="map">
 
     </div>
@@ -143,7 +148,9 @@
             </div>
         </div>
     </div>
-
+    <div class="card-body">
+      </div>
+    </div>
     <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -300,6 +307,8 @@
             $(".loader-wrapper").fadeOut("slow");
         });
     </script>
+
+</body>
 
 </body>
 </html>
