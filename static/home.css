@@ -112,3 +112,14 @@ h1, h2, h3 {
 .modal-header{
     background-color: black !important;
 }
+
+.card #getMap{
+    background: -webkit-linear-gradient(0deg, #c8ff03 35%, #c8ff03 28%, #12b10c 66%, #138d0f 66%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    order: 1;
+    font-size: 25pt;
+    padding-left: 25pt;
+    padding-right: 25pt;
+    font-family: Raleway;
+}
