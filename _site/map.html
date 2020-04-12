@@ -205,6 +205,15 @@
 
 
                 let energy_data = {};
+
+                $.ajax({url: "./carbon_data.json", success: function(result) { 
+                        console.log("carbon data: " + result['India'])
+                    }});
+                
+                    $.ajax({url: "./energy_data.json", success: function(result) { 
+                        console.log("energy data: " +  result['India'])
+                    }});
+
                 $.ajax({url: "/static/energy.json", success: function(result) { 
                     let json_length = result.data.length;
                     for(let m = 0; m < json_length; m++)
