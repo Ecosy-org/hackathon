@@ -205,13 +205,12 @@
                             $('#aqi-text').html(result.data.aqi)
                             $('#aqi-intensity').html(intensity)
                         }
-                    })
+                    }) 
                     $('#carbon-text').html(carbon_data[country]);
                     $('#energy-text').html(energy_data[country]);
                     $('#modal-title').html(country.toUpperCase())
                 }
-
-
+                
                 let energy_data;
                 let carbon_data;
                 $.ajax({url: "/static/carbon_data.json", success: function(result) { 
@@ -271,6 +270,7 @@
 
                 $.ajax({url: `https://json.geoiplookup.io/`,
                         success: function(result){
+                            console.log('starting to get country from ip')
                             let country = result.country_name.toLowerCase();
                             popup += `<li class="list">Emissions in a year of carbon dioxide per capita in ${country} (metric tons): ${carbon_data[country]}</li>`;
                             marker.bindPopup(popup).openPopup();
