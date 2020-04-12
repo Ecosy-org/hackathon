@@ -174,7 +174,7 @@ title: Data
                             marker.bindPopup(popup,customOptions).openPopup();
                             map.setView(new L.LatLng(result.data.city.geo[0], result.data.city.geo[1]),4)
                             console.log("added current location marker and popup")
-                        }})
+                        
 
                 $.ajax({url: `https://json.geoiplookup.io/`,
                         success: function(result){
@@ -210,6 +210,7 @@ title: Data
 
                                     // we need to catch errors here if the country isn't in the json
                         }}) 
+                    }})
                         $('.loading').hide();
             })
             $(window).on("load", function () {

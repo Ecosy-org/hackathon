@@ -169,6 +169,8 @@
 
             console.log("map added")
 
+            var energy_data;
+            var carbon_data;
             $(document).ready(function() {
 
                 var blackIcon = new L.Icon({
@@ -211,8 +213,7 @@
                     $('#modal-title').html(country.toUpperCase())
                 }
                 
-                let energy_data;
-                let carbon_data;
+
                 $.ajax({url: "/static/json/carbon_data.json", success: function(result) { 
                         carbon_data = result;
                     }});
@@ -266,7 +267,7 @@
                             marker.bindPopup(popup,customOptions).openPopup();
                             map.setView(new L.LatLng(result.data.city.geo[0], result.data.city.geo[1]),4)
                             console.log("added current location marker and popup")
-                        }})
+                        
 
                 $.ajax({url: `https://json.geoiplookup.io/`,
                         success: function(result){
@@ -302,6 +303,7 @@
 
                                     // we need to catch errors here if the country isn't in the json
                         }}) 
+                    }})
                         $('.loading').hide();
             })
             $(window).on("load", function () {
