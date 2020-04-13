@@ -30,6 +30,16 @@ body {
     align-content: center;
     font-family: Raleway;
 }
+#intro{
+    color: rgb(1, 255, 1);
+    font-weight: bold;
+    font-style: italic;
+}
+.center1 {
+    display: block;
+    margin-right: auto;
+    width: 30%;
+  }
 
 .center {
     display: block;
